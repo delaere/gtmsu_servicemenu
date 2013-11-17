@@ -37,7 +37,7 @@ build() {
 package() {
 	cd "$srcdir/$_gitname/"
 	install -d "$pkgdir"/usr/share/kde4/services/ServiceMenus
-	cp  gtmsu_tag.desktop "$pkgdir"/usr/share/kde4/services/ServiceMenus/gtmsu_tag.desktop
+	cp  *.desktop "$pkgdir"/usr/share/kde4/services/ServiceMenus/
 	install -d "$pkgdir"/usr/bin
 	cp gtmsu "$pkgdir"/usr/bin/
 

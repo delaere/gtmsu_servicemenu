@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Service
+Actions=gtmsu_mount;
+ServiceTypes=KonqPopupMenu/Plugin
+
+[Desktop Action gtmsu_mount]
+Exec=gtmsu vfs
+Name=Virtual file-system (VFS) of tags 
+Icon=bookmarks

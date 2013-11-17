@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Service
+Actions=gtmsu_edit;
+ServiceTypes=KonqPopupMenu/Plugin
+
+[Desktop Action gtmsu_edit]
+Exec=gtmsu edit
+Name=Manage tags
+Icon=bookmarks

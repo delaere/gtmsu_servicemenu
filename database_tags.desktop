@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Service
+Actions=gtmsu_db;
+ServiceTypes=KonqPopupMenu/Plugin
+
+[Desktop Action gtmsu_db]
+Exec=gtmsu db
+Name=Change the default database location 
+Icon=bookmarks
