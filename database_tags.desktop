@@ -1,7 +1,10 @@
 [Desktop Entry]
 Type=Service
 Actions=gtmsu_db;
-ServiceTypes=KonqPopupMenu/Plugin
+X-KDE-Priority=TopLevel
+Encoding=UTF-8
+ServiceTypes=KonqPopupMenu/Plugin,all/allfiles
+Icon=bookmarks
 
 [Desktop Action gtmsu_db]
 Exec=gtmsu db
