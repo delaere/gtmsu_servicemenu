@@ -2,6 +2,7 @@
 Type=Service
 Actions=gtmsu;
 X-KDE-Priority=TopLevel
+X-KDE-Submenu=Tag Options
 Encoding=UTF-8
 ServiceTypes=KonqPopupMenu/Plugin,inode/directory
 Icon=bookmarks
