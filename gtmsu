@@ -9,7 +9,7 @@ function list_all_tags () {
 if [ "$1" == 'tag' ]; then
     shift
     files=("$@")
-    if [ -s $db ]; then
+    if [ ! -s $db ]; then
         tag_initial=$(zenity --entry --text "Create your 1st tag:" --entry-text "example.tag");
         tmsu tag --tags "$tag_initial" "${files[@]}" > $out 2> $err
     else
