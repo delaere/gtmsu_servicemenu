@@ -7,9 +7,9 @@ A GUI application that allows you to tag your files to organize them.
 
 Includes [tmsu][3].
 
-Includes KDE service menu.
+Includes KDE service menus.
 
-Depends on: go-sqlite3, go-fuse, tmsu, kdebase-dolphin
+Depends on: zenity, go-sqlite3, go-fuse, kdebase-dolphin
 
 Install with
 ------------
@@ -28,12 +28,17 @@ Remove with
 Run with
 --------
 
-In dolphin right click context menu adds 'Tag file(s)'
-In other file managers add this to context menu: gtmsu %U
+In dolphin right click context menu adds 'Tag file(s)' and 'Tagging Options'
+
+In other file managers add these to context menu: 
+gtmsu tag %U
+gtmsu edit
+gtmsu mount
+gtmsu db
 
 
-In terminal
------------
+TMSU
+----
 
     $ tmsu help
 
@@ -66,4 +71,3 @@ SHARE AND ENJOY!
 [1]: http://www.linuxdistrocommunity.com
 [2]: https://github.com/idk/gtmsu_servicemenu/issues
 [3]: http://tmsu.org
-
