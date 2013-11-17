@@ -47,7 +47,7 @@ build() {
 	cd "$srcdir/$_gitname-build"
 
 	# Create pkgdir folders
-	install -d $pkgdir/usr/share/kde4/services/ServiceMenus
+	#install -d $pkgdir/usr/share/kde4/services/ServiceMenus
 
 	# Install
 	cp -r gtmsu_tag.desktop $pkgdir/usr/share/kde4/services/ServiceMenus/gtmsu_tag.desktop
