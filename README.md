@@ -1,11 +1,13 @@
 gtmsu_servicemenu
 =================
 
-KDE servicemenu for tmsu. (http://tmsu.org/)
+A GUI application that allows you to tag your files to organize them.
 
-https://github.com/idk/gtmsu_servicemenu
+Includes [tmsu][3].
 
-Depends on: tmsu, kdebase-dolphin
+Includes KDE service menu.
+
+Depends on: go-sqlite3, go-fuse, tmsu, kdebase-dolphin
 
 Install with
 ------------
@@ -27,6 +29,12 @@ Run with
 In dolphin right click context menu adds 'Tag file(s)'
 
 
+In terminal
+-----------
+
+    $ tmsu help
+
+
 SUPPORT
 -------
 
@@ -37,7 +45,7 @@ SUPPORT
 
 HISTORY
 -------
-* 2013-11-16: Version 0.0.1
+* 2013-11-16: Version 0.2.2
 
 Contributing
 ------------
@@ -54,4 +62,5 @@ SHARE AND ENJOY!
 
 [1]: http://www.linuxdistrocommunity.com
 [2]: https://github.com/idk/gtmsu_servicemenu/issues
+[3]: http://tmsu.org
 

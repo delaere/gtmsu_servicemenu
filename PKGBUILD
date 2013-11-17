@@ -1,15 +1,13 @@
 # Maintainer: pdq <pdq@localhost>
 pkgname=gtmsu_servicemenu
-pkgver=0.0.1
+pkgver=0.2.2
 pkgrel=1
-pkgdesc="KDE servicemenu for tmsu. (http://tmsu.org/) - GIT Version"
+pkgdesc="A GUI application that allows you to tag your files to organize them. Includes tmsu. Includes KDE service menu."
 arch=(any)
 url="https://github.com/idk/gtmsu_servicemenu.git"
 license=('GPL3')
 makedepends=('git')
 
-pkgver_=0.2.2
-pkgdesc_="An application that allows you to tag your files to organize them."
 url_="http://tmsu.org"
 md5sums=('24eb5ed29758a84519c36e322b9c9d3c')
 depends=('kdebase-dolphin' 'go-sqlite3' 'go-fuse')
