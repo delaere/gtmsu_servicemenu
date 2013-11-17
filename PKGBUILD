@@ -6,9 +6,7 @@ pkgdesc="KDE servicemenu for tmsu. (http://tmsu.org/) - GIT Version"
 arch=(any)
 url="https://github.com/idk/gtmsu_servicemenu.git"
 license=('GPL')
-conflicts=('')
 depends=('tmsu' 'kdebase-dolphin')
-optdepends=('')
 makedepends=('git')
 
 _gitroot="git://github.com/idk/gtmsu_servicemenu.git"
