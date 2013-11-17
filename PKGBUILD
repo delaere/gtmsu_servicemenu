@@ -13,7 +13,7 @@ pkgdesc_="An application that allows you to tag your files to organize them."
 url_="http://tmsu.org"
 md5sums=('24eb5ed29758a84519c36e322b9c9d3c')
 depends=('kdebase-dolphin' 'go-sqlite3' 'go-fuse')
-conflicts=('tmsu')
+conflicts=('tmsu' 'tmsu-bin')
 source=("tmsu-$pkgver_::https://bitbucket.org/oniony/tmsu/downloads/tmsu-i686-${pkgver_}.tgz")
 md5sums=('34bb884557bae5f01c4b14ea20c0fe81')
 
