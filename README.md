@@ -21,7 +21,7 @@ example:
 Remove with
 -----------
 
-    # pacman -Rs gtmsu_servicemenu
+    # pacman -R gtmsu_servicemenu
 
 Run with
 --------
