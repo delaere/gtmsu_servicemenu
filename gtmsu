@@ -30,4 +30,13 @@ if [ "$1" == 'tag' ]; then
         #    zenity --info --text="$txt"
         fi
     fi
+elif [ "$1" == 'mount' ]; then
+    #
+    echo ""
+elif [ "$1" == 'edit' ]; then
+    #
+    echo ""
+elif [ "$1" == 'db' ]; then
+    #
+    echo ""
 fi
