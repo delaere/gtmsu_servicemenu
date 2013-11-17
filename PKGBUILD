@@ -24,7 +24,8 @@ _gitname="gtmsu_servicemenu"
 
 package() {
   cd "$srcdir/tmsu-$pkgver_/"
-  mkdir -p $pkgdir/usr/bin
+  #mkdir -p $pkgdir/usr/bin
+  install -d $pkgdir/usr/bin
   cp bin/tmsu $pkgdir/usr/bin/
 }
 
