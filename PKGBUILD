@@ -38,14 +38,15 @@ build() {
 		msg "The local files are updated."
 	else
 		git clone $_gitroot $_gitname
+		cd $_gitname
 	fi
 
 	msg "GIT checkout done or server timeout"
 	msg "Starting make..."
 
-	rm -rf "$srcdir/$_gitname-build"
-	git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-	cd "$srcdir/$_gitname-build"
+	# rm -rf "$srcdir/$_gitname-build"
+	# git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+	# cd "$srcdir/$_gitname-build"
 
 	# Create pkgdir folders
 	install -d "$pkgdir"/usr/share/kde4/services/ServiceMenus
