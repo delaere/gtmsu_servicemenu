@@ -1,6 +1,8 @@
 #!/bin/bash
 
 db=${TMSU_DB:-$HOME/.tmsu/default.db}
+out=$(mktemp /tmp/tmsu.XXXX.out)
+err=$(mktemp /tmp/tmsu.XXXX.err)
 
 function list_all_tags () {
     echo 'select name from tag;' | sqlite3 $db
@@ -15,16 +17,17 @@ if [ "$1" == 'tag' ]; then
     else
         tags=$(list_all_tags | zenity --list --title="tag" --text="Enter tag(s) to apply" --column=tags --editable --multiple --separator=' ')
         if [ $? -eq 0 -a -n "$tags" ]; then
-            out=$(mktemp /tmp/tmsu.XXXX.out)
-            err=$(mktemp /tmp/tmsu.XXXX.err)
             tmsu tag --tags "$tags" "${files[@]}" > $out 2> $err
-            ret=$?
-            txt="Return code: $ret\n\nStderr:\n$(cat $err)\n\nStdout:\n$(cat $out)"
-            if [ $ret -gt 0 ]; then
-                zenity --warning --text="$txt"
-            #else
-            #   zenity --info --text="$txt"
-            fi
+        fi
+    fi
+    
+    ret=$?
+    if [[ $ret ]]; then
+        txt="Return code: $ret\n\nStderr:\n$(cat $err)\n\nStdout:\n$(cat $out)"
+        if [ $ret -gt 0 ]; then
+            zenity --warning --text="$txt"
+        else
+            zenity --info --text="$txt"
         fi
     fi
 fi
