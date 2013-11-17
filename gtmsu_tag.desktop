@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Service
+Actions=gtmsu_tag;
+X-KDE-Priority=TopLevel
+Encoding=UTF-8
+ServiceTypes=KonqPopupMenu/Plugin,all/allfiles
+Icon=bookmarks
+
+[Desktop Action gtmsu_tag]
+Exec=gtmsu tag %U
+Icon=bookmarks
+Name=Tag file(s)
