@@ -3,6 +3,8 @@ gtmsu_servicemenu
 
 A GUI application that allows you to tag your files to organize them.
 
+![alt text](http://mooos.org/scr/111723.png "gtmsu_servicemenu")
+
 Includes [tmsu][3].
 
 Includes KDE service menu.
