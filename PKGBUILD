@@ -22,13 +22,6 @@ _gitname="gtmsu_servicemenu"
 
 #install=$pkgname.install
 
-package() {
-  cd "$srcdir/tmsu-$pkgver_/"
-  #mkdir -p $pkgdir/usr/bin
-  install -d "$pkgdir"/usr/bin
-  cp bin/tmsu "$pkgdir"/usr/bin/
-}
-
 build() {
 	cd "$srcdir"
 	msg "Connecting to GIT server...."
@@ -40,17 +33,17 @@ build() {
 		git clone $_gitroot $_gitname
 		cd $_gitname
 	fi
-
 	msg "GIT checkout done or server timeout"
-	msg "Starting make..."
+}
 
-	# rm -rf "$srcdir/$_gitname-build"
-	# git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-	# cd "$srcdir/$_gitname-build"
-
-	# Create pkgdir folders
+package() {
+	cd "$srcdir/$_gitname/"
 	install -d "$pkgdir"/usr/share/kde4/services/ServiceMenus
-
 	# Install
 	cp -r gtmsu_tag.desktop "$pkgdir"/usr/share/kde4/services/ServiceMenus/gtmsu_tag.desktop
+
+	cd "$srcdir/tmsu-$pkgver_/"
+	#mkdir -p $pkgdir/usr/bin
+	install -d "$pkgdir"/usr/bin
+	cp bin/tmsu "$pkgdir"/usr/bin/
 }
