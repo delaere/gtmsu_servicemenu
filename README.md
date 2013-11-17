@@ -14,7 +14,7 @@ Install with
 
 example:
     
-     $ mkdir -p ~/abs/gtmsu_servicemenu && cd ~/abs/gtmsu_servicemenu && wget https://raw.github.com/idk/gtmsu_servicemenu/master/PKGBUILD && makepkg -sfi
+     $ mkdir -p ~/abs/gtmsu_servicemenu && cd ~/abs/gtmsu_servicemenu && wget https://raw.github.com/idk/gtmsu_servicemenu/master/PKGBUILD && makepkg -sfi && rm -r ~/abs/gtmsu_servicemenu
 
 Remove with
 -----------
