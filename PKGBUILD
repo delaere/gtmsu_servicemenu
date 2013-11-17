@@ -12,7 +12,7 @@ url_="http://tmsu.org"
 md5sums=('24eb5ed29758a84519c36e322b9c9d3c')
 depends=('kdebase-dolphin' 'go-sqlite3' 'go-fuse')
 conflicts=('tmsu' 'tmsu-bin')
-source=("tmsu-$pkgver_::https://bitbucket.org/oniony/tmsu/downloads/tmsu-i686-${pkgver_}.tgz")
+source=("tmsu-$pkgver::https://bitbucket.org/oniony/tmsu/downloads/tmsu-i686-${pkgver}.tgz")
 md5sums=('34bb884557bae5f01c4b14ea20c0fe81')
 
 _gitroot="git://github.com/idk/gtmsu_servicemenu.git"
@@ -40,7 +40,7 @@ package() {
 	# Install
 	cp -r gtmsu_tag.desktop "$pkgdir"/usr/share/kde4/services/ServiceMenus/gtmsu_tag.desktop
 
-	cd "$srcdir/tmsu-$pkgver_/"
+	cd "$srcdir/tmsu-$pkgver/"
 	#mkdir -p $pkgdir/usr/bin
 	install -d "$pkgdir"/usr/bin
 	cp bin/tmsu "$pkgdir"/usr/bin/
