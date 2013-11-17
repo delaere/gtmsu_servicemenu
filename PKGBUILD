@@ -10,7 +10,7 @@ makedepends=('git')
 
 url_="http://tmsu.org"
 md5sums=('24eb5ed29758a84519c36e322b9c9d3c')
-depends=('kdebase-dolphin' 'go-sqlite3' 'go-fuse')
+depends=('kdebase-dolphin' 'go-sqlite3' 'go-fuse' 'zenity')
 conflicts=('tmsu' 'tmsu-bin')
 source=("tmsu-$pkgver::https://bitbucket.org/oniony/tmsu/downloads/tmsu-i686-${pkgver}.tgz")
 md5sums=('34bb884557bae5f01c4b14ea20c0fe81')
@@ -37,11 +37,11 @@ build() {
 package() {
 	cd "$srcdir/$_gitname/"
 	install -d "$pkgdir"/usr/share/kde4/services/ServiceMenus
-	# Install
-	cp -r gtmsu_tag.desktop "$pkgdir"/usr/share/kde4/services/ServiceMenus/gtmsu_tag.desktop
+	cp  gtmsu_tag.desktop "$pkgdir"/usr/share/kde4/services/ServiceMenus/gtmsu_tag.desktop
+	install -d "$pkgdir"/usr/bin
+	cp gtmsu "$pkgdir"/usr/bin/
 
 	cd "$srcdir/tmsu-$pkgver/"
-	#mkdir -p $pkgdir/usr/bin
 	install -d "$pkgdir"/usr/bin
 	cp bin/tmsu "$pkgdir"/usr/bin/
 }

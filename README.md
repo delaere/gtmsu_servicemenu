@@ -27,6 +27,7 @@ Run with
 --------
 
 In dolphin right click context menu adds 'Tag file(s)'
+In other file managers add this to context menu: gtmsu %U
 
 
 In terminal
