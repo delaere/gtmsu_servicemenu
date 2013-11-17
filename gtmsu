@@ -15,7 +15,7 @@ if [ "$1" == 'tag' ]; then
         tag_initial=$(zenity --entry --text "Create your 1st tag:" --entry-text "example.tag");
         tmsu tag --tags "$tag_initial" "${files[@]}" > $out 2> $err
     else
-        tags=$(list_all_tags | zenity --list --title="tag" --text="Enter tag(s) to apply" --column=tags --editable --multiple --separator=' ')
+        tags=$(list_all_tags | zenity --list --title="tag" --text="Enter, edit or create new tag(s)" --column=tags --editable --multiple --separator=' ')
         if [ $? -eq 0 -a -n "$tags" ]; then
             tmsu tag --tags "$tags" "${files[@]}" > $out 2> $err
         fi
@@ -26,8 +26,8 @@ if [ "$1" == 'tag' ]; then
         txt="Return code: $ret\n\nStderr:\n$(cat $err)\n\nStdout:\n$(cat $out)"
         if [ $ret -gt 0 ]; then
             zenity --warning --text="$txt"
-        else
-            zenity --info --text="$txt"
+        #else
+        #    zenity --info --text="$txt"
         fi
     fi
 fi
