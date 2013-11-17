@@ -7,8 +7,22 @@ https://github.com/idk/gtmsu_servicemenu
 
 Depends on: tmsu, kdebase-dolphin
 
-Run
----
+Install with
+------------
+
+    $ makepkg -sfi PKGBUILD
+
+example:
+    
+     $ mkdir -p ~/abs/gtmsu_servicemenu && cd ~/abs/gtmsu_servicemenu && wget https://raw.github.com/idk/gtmsu_servicemenu/master/PKGBUILD && makepkg -sfi
+
+Remove with
+-----------
+
+    # pacman -Rs gtmsu_servicemenu
+
+Run with
+--------
 
 In dolphin right click context menu adds 'Tag file(s)'
 
@@ -19,10 +33,6 @@ SUPPORT
 [The Linux Distro Community][1]
 
 [pdq][2]
-
-
-TODO
-----
 
 
 HISTORY

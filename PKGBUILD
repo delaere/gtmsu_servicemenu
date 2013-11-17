@@ -40,4 +40,3 @@ build() {
 	# Install
 	cp -r gtmsu_tag.desktop $pkgdir/usr/share/kde4/services/ServiceMenus/gtmsu_tag.desktop
 }
-
