@@ -32,7 +32,7 @@ if [ "$1" == 'tag' ]; then
         fi
     fi
 elif [ "$1" == 'mount' ]; then
-    txt=$(zenity --entry --text "Create a path to where "tags" directory should mount:" --entry-text "/mnt/tags")
+    txt=$(zenity --entry --text "Create a path to where "tags" directory should mount:" --entry-text "/media/truecrypt3/tags")
     mkdir -p "$txt"
     if [ -d "$txt" ]; then
         tmsu mount "$txt"
@@ -50,16 +50,19 @@ elif [ "$1" == 'db' ]; then
     #
     echo ""
 elif [ "$1" == 'import' ]; then
-    zenity --info --text "Browse to your tags.txt (a file containing a list of tags, 1 per line)"
+    zenity --info --text "Browse to your tags.txt\n(a file containing a list of tags, 1 per line)"
     tags_list=$(zenity --file-selection)
     if [ -f "$tags_list" ]; then
         echo "Valid filepath found, continuing..."
+        zenity --info --text "This may take a while..."
         file_name=".wee$$"
         touch "$file_name"
-        for fn in $(cat "$tags_list"); do
+        tags_file=$(cat "$tags_list")
+        for fn in $tags_file
+         do
             tmsu tag "$file_name" $fn
         done
-        zenity --info --text "Imported tags: $(cat \"$tags_list\")"
+        zenity --info --text "Imported tags: $tags_file"
         rm "$file_name"
     else
         zenity --error --text "Import failed! No such file: $file_name"
