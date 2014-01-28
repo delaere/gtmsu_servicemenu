@@ -1,7 +1,7 @@
 # Maintainer: pdq <pdq@localhost>
 pkgname=gtmsu_servicemenu
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI application that allows you to tag your files to organize them. Includes tmsu. Includes KDE service menu."
 arch=(any)
 url="https://github.com/idk/gtmsu_servicemenu.git"

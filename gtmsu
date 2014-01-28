@@ -3,6 +3,7 @@
 db=${TMSU_DB:-$HOME/.tmsu/default.db}
 out=$(mktemp /tmp/tmsu.XXXX.out)
 err=$(mktemp /tmp/tmsu.XXXX.err)
+PWD=$(pwd)
 
 function list_all_tags () {
     echo 'select name from tag;' | sqlite3 $db
@@ -31,6 +32,15 @@ if [ "$1" == 'tag' ]; then
         fi
     fi
 elif [ "$1" == 'mount' ]; then
+    txt=$(zenity --entry --text "Create a path to where "tags" directory should mount:" --entry-text "/mnt/tags")
+    mkdir -p "$txt"
+    if [ -d "$txt" ]; then
+        tmsu mount "$txt"
+        cd $txt
+        tags_ls=$(ls $txt)
+        cd $PWD
+        zenity --info --text "Tags successsfully mounted at $txt.\n\n$tags_ls"
+    fi
     #
     echo ""
 elif [ "$1" == 'edit' ]; then
@@ -39,4 +49,20 @@ elif [ "$1" == 'edit' ]; then
 elif [ "$1" == 'db' ]; then
     #
     echo ""
+elif [ "$1" == 'import' ]; then
+    zenity --info --text "Browse to your tags.txt (a file containing a list of tags, 1 per line)"
+    tags_list=$(zenity --file-selection)
+    if [ -f "$tags_list" ]; then
+        file_name=".wee$$"
+        touch "$file_name"
+        for fn in $(cat "$tags_list"); do
+            tmsu tag "$file_name" $fn
+            echo "Imported tag: $fn"
+        done
+        rm "$file_name"
+    else
+        zenity --error --text "Import failed! No such file: $file_name"
+    fi
 fi
+
+exit 0
