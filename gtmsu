@@ -32,12 +32,12 @@ if [ "$1" == 'tag' ]; then
         fi
     fi
 elif [ "$1" == 'mount' ]; then
-    txt=$(zenity --entry --text "Create a path to where "tags" directory should mount:" --entry-text "/media/truecrypt3/tags")
+    txt=$(zenity --entry --text "Create a path to where "tags" directory should mount:" --entry-text "/media/truecrypt3/Videos")
     mkdir -p "$txt"
     if [ -d "$txt" ]; then
         tmsu mount "$txt"
-        cd $txt
-        tags_ls=$(ls $txt)
+        cd "$txt/tags"
+        tags_ls=$(ls)
         cd $PWD
         zenity --info --text "Tags successsfully mounted at $txt.\n\n$tags_ls"
     fi
