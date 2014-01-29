@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ -f "$HOME/.tmsu/VARS" ]; then
+    . $HOME/.tmsu/VARS
+fi
+
+[ ! -f "$TMSU_DB" ] && export TMSU_DB= 
 db=${TMSU_DB:-$HOME/.tmsu/default.db}
 out=$(mktemp /tmp/tmsu.XXXX.out)
 err=$(mktemp /tmp/tmsu.XXXX.err)
@@ -9,7 +14,7 @@ function list_all_tags () {
     echo 'select name from tag;' | sqlite3 $db
 }
 
-if [ "$1" == 'tag' ]; then
+if [ "$1" == "tag" ]; then
     shift
     files=("$@")
     if [ ! -s $db ]; then
@@ -36,24 +41,43 @@ elif [ "$1" == 'mount' ]; then
     mkdir -p "$txt"
     if [ -d "$txt" ]; then
         tmsu mount "$txt"
-        cd "$txt/tags"
-        tags_ls=$(ls)
-        cd $PWD
-        zenity --info --text "Tags successsfully mounted at $txt.\n\n$tags_ls"
+        if [ $? -eq 0 ]; then
+            cd "$txt/tags"
+            tags_ls=$(ls)
+            cd $PWD
+            zenity --info --text "Tags successsfully mounted at $txt.\n\n$tags_ls"
+        else
+            zenity --info --text "Tags Failed to mount at $txt.\n\nMountpoint is not empty."
+        fi
     fi
     #
     echo ""
-elif [ "$1" == 'edit' ]; then
+elif [ "$1" == "edit" ]; then
     #
     echo ""
-elif [ "$1" == 'db' ]; then
-    #
-    echo ""
-elif [ "$1" == 'import' ]; then
+elif [ "$1" == "db" ]; then
+        what_do=$(zenity --question --ok-label "Select a database to use" --cancel-label "Create a new tag database" --text "What to do?")
+        if [ $what_do -eq 0 ]; then ## Select a database to use
+            zenity --info --text "Browse to your .db file\n(usually located in ~/.tmsu/)"
+            db_location=$(zenity --file-selection)
+            if [ -f "$db_location" ]; then
+                echo "TMSU_DB=$db_location" > "$HOME/.tmsu/VARS"
+                zenity --info --text "Tags database now set to $db_location"
+            fi
+        else # Create a new tag database
+            tags_db=$(zenity --entry --text "Create a custom name for your tags database:" --entry-text "Music")
+            if [ ! -f "$HOME/.tmsu/$tags_db.db" ]; then
+                touch "$HOME/.tmsu/$tags_db.db"
+                echo "TMSU_DB=$HOME/.tmsu/$tags_db.db" > "$HOME/.tmsu/VARS"
+                zenity --info --text "Tags database $tags_db has been created at $HOME/.tmsu/$tags_db.db"
+            else
+                zenity --warning --text "Tags database $tags_db could not be created at $HOME/.tmsu/$tags_db.db\n\nPerhaps this file exists already?"
+            fi
+        fi
+elif [ "$1" =="import" ]; then
     zenity --info --text "Browse to your tags.txt\n(a file containing a list of tags, 1 per line)"
     tags_list=$(zenity --file-selection)
     if [ -f "$tags_list" ]; then
-        echo "Valid filepath found, continuing..."
         zenity --info --text "This may take a while..."
         file_name=".wee$$"
         touch "$file_name"
@@ -61,7 +85,7 @@ elif [ "$1" == 'import' ]; then
         for fn in $tags_file
          do
             tmsu tag "$file_name" $fn
-        done
+        done | zenity --progress --title="Importing tags" --text="moo" --pulsate --width=400 --auto-close
         zenity --info --text "Imported tags: $tags_file"
         rm "$file_name"
     else
