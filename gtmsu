@@ -78,18 +78,18 @@ elif [ "$1" == "import" ]; then
     zenity --info --text "Browse to your tags.txt\n(a file containing a list of tags, 1 per line)"
     tags_list=$(zenity --file-selection)
     if [ -f "$tags_list" ]; then
-        zenity --info --text "This may take a while..."
         file_name=".wee$$"
         touch "$file_name"
         tags_file=$(cat "$tags_list")
+        tags_count=$(cat "$tags_file" | wc -l)
         for fn in $tags_file
          do
             tmsu tag "$file_name" $fn
-        done | zenity --progress --title="Importing tags" --text="moo" --pulsate --width=400 --auto-close
-        zenity --info --text "Imported tags: $tags_file"
+        done | zenity --progress --title="Importing tags" --text="This may take a while..." --pulsate --width=400 --auto-close
+        zenity --info --text "Imported $tags_count tags successfully."
         rm "$file_name"
     else
-        zenity --error --text "Import failed! No such file: $file_name"
+        zenity --error --text "Import failed! No such file: $tags_list"
     fi
 fi
 
