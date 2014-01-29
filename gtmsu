@@ -36,7 +36,7 @@ if [ "$1" == "tag" ]; then
         #    zenity --width 400 --height 250 --title="gtmsu $db" --info --text="$txt"
         fi
     fi
-elif [ "$1" == 'mount' ]; then
+elif [ "$1" == "mount" ]; then
     txt=$(zenity --entry --text "Create a path to where "tags" directory should mount:" --entry-text "/media/truecrypt3/Videos")
     mkdir -p "$txt"
     if [ -d "$txt" ]; then
@@ -74,7 +74,7 @@ elif [ "$1" == "db" ]; then
                 zenity --warning --text "Tags database $tags_db could not be created at $HOME/.tmsu/$tags_db.db\n\nPerhaps this file exists already?"
             fi
         fi
-elif [ "$1" =="import" ]; then
+elif [ "$1" == "import" ]; then
     zenity --info --text "Browse to your tags.txt\n(a file containing a list of tags, 1 per line)"
     tags_list=$(zenity --file-selection)
     if [ -f "$tags_list" ]; then
