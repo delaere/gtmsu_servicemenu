@@ -81,7 +81,7 @@ elif [ "$1" == "import" ]; then
         file_name=".wee$$"
         touch "$file_name"
         tags_file=$(cat "$tags_list")
-        tags_count=$(cat "$tags_file" | wc -l)
+        tags_count=$(cat "$tags_list" | wc -l)
         for fn in $tags_file
          do
             tmsu tag "$file_name" $fn
